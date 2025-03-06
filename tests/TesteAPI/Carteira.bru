@@ -1,0 +1,19 @@
+meta {
+  name: Carteira
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:9999/carteira?tickers=IBOV,ALUG11,WRLD11&pesos=50,20,30&from=1701867600&to=1711112400&valorInicial=10000
+  body: none
+  auth: none
+}
+
+query {
+  tickers: IBOV,ALUG11,WRLD11
+  pesos: 50,20,30
+  from: 1701867600
+  to: 1711112400
+  valorInicial: 10000
+}

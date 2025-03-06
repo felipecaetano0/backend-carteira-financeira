@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache directories
+.npm
+.eslintcache
+.cache/
+
+# Coverage reports
+coverage/
+*.lcov
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Testing
+/junit.xml
+
+# Docker
+docker-compose*.yml
+.dockerdata/
+docker-data/
+
+# Temporary files
+.tmp/
+*.bak
+*~
+*.sqlite
+*.sqlite3
