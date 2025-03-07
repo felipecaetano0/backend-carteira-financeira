@@ -44,6 +44,9 @@ Para uma primeira implementação, foi utilizado a leitura por arquivos pré car
 
 Esta API não necessita de banco de dados sumariamente pois não armazena dados, somente consulta e os processa. Entretanto caso haja necessidade, a estrutura está pronta do projeto está pronta para implementar o armazenamento pois as classes model estão separadas das classes de controller.
 
+## Diagrama de classes das Regras de negócio
+![Arquitetura](./Diagrama%20de%20classe.jpg)
+
 ## Testes automatizados
 Foram implementados testes automatizados para testar os endpoints da API.
 
@@ -81,8 +84,7 @@ http://localhost:9999/carteira?tickers=IBOV,ALUG11,WRLD11&pesos=50,20,30&from=17
 ![](./prints_dos_testes/Screenshot%20from%202025-03-07%2011-56-31.png)
 ![](./prints_dos_testes/Screenshot%20from%202025-03-07%2011-56-54.png)
 
-## Regras de negócio implementadas
-![Arquitetura](./Diagrama%20de%20classe.jpg)
+
 
 
 Este projeto foi criado para o desafio backend da Investo que pode ser acessado em: https://github.com/investo-etf/desafio-backend
