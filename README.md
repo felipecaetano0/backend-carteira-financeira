@@ -16,7 +16,7 @@ opcional para testes manuais: bruno - Open source API Client similar ao Postman:
 - Clone o repositório:
 `git clone git@github.com:felipecaetano0/backend-carteira-financeira.git`
 
-### Manual
+### Instalação Manual
 - Execute o script criado para facilitar a instalação e execução do servidor:
 `npm run up`
 
@@ -29,7 +29,7 @@ npm run test
 node dist/src/index.js
 ```
 
-### Docker
+### Instalação via Docker
 ```
 docker build -t broker_report .
 docker run -p 9999:9999 broker_report
@@ -38,7 +38,7 @@ docker run -p 9999:9999 broker_report
 Caso necessite de outra porta, é possivel configurá-la através de uma variável de ambiente com o nome PORT
 
 ## Estrutura do projeto
-Este projeto está estruturado em uma arquitetura MVC, onde implementamos as camadas de Model e Controller para criar uma API REST disponibilizar os dados para a View.
+Este projeto está estruturado em uma arquitetura MVC, onde foram implementadas as camadas de Model e Controller para criar uma API REST disponibilizar os dados para a View.
 
 Para uma primeira implementação, foi utilizado a leitura por arquivos pré carregados. Para uma implementação visando adquirir os dados de uma fonte em tempo real, como por exemplo uma API financeira (https://query1.finance.yahoo.com/v8/finance/chart/BNDX11.SA), seria necessário somente implementar um interface IDataFetcher pois já foi injetada uma dependência com este objetivo.
 
