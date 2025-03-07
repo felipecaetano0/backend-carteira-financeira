@@ -4,6 +4,6 @@ export interface IDataFetcher {
 
 export interface IFileDataFetcher  extends IDataFetcher {
   timestamps: number[];
-  valorFechamento: number[];
+  valor: number[];
 }
 

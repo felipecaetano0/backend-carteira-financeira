@@ -13,7 +13,7 @@ export default class Carteira {
   valorInicial: number = 0;
   valorFinal: number = 0;
   rentabilidadeTotal: number = 0;
-  rentabilidadeAnual: number = 0;
+  rentabilidadePercentual: number = 0;
 
 
   constructor(public tickers: string[], public pesos: number[], from: string, to: string) {
@@ -81,12 +81,12 @@ export default class Carteira {
    * @param valorInicial - O valor inicial do investimento.
    */
   simular(valorInicial: number) {
-    if (valorInicial <= 0) {
-      throw new Error('Initial value must be positive');
+    if (valorInicial < 0) {
+      throw new Error('Valor Inicial deve ser positivo');
     }
     this.valorInicial = valorInicial;
     this.rentabilidadeTotal = this.rentabilidadeDiaria.reduce((acc, multiplicador) => acc * multiplicador, 1);
     this.valorFinal = this.valorInicial * this.rentabilidadeTotal;
-    this.rentabilidadeAnual = (this.rentabilidadeTotal - 1) * 100;
+    this.rentabilidadePercentual = (this.rentabilidadeTotal - 1) * 100;
   }
 }

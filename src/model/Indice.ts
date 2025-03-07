@@ -1,33 +1,33 @@
 import { IFileDataFetcher } from '../controller/DataFetcher/IDataFetcher';
 import JSONFileDataFetcher from '../controller/DataFetcher/JSONFileDataFetcher';
+import AtivoFinanceiro from './AtivoFinanceiro';
 
 
 /**
 * Representa um índice de ativo financeiro, como o IBOVESPA.
 * Calcula os retornos diários do índice com base nos valores de fechamento.
 */
-export class Indice {
+export class Indice extends AtivoFinanceiro {
   timestamps: number[] = [];
   valorFechamento: number[] = [];
   rentabilidadeDiaria: number[] = [];
 
 
   constructor(public ticker: string) {
-    if (!ticker || ticker.trim() === '') {
-      throw new Error('Ticker não pode ser vazio');
-    }
+    super(ticker);
 
-    const dataFetcher: IFileDataFetcher = new JSONFileDataFetcher(ticker);
+    const dataFetcher = new JSONFileDataFetcher(ticker);
     this.timestamps = dataFetcher.timestamps;
-    this.valorFechamento = dataFetcher.valorFechamento;
-    if(this.isEmpty()) {
+    this.valorFechamento = dataFetcher.valor;
+    if (this.isEmpty()) {
       throw new Error('Ticker não encontrado');
     }
-    if(!this.dadosValidos()) {
+    if (!this.dadosValidos()) {
       throw new Error('Dados inválidos');
     }
     this.calcularRentabilidadeDiaria();
   }
+
 
   /**
   * Calcula os retornos diários para o índice.
@@ -43,6 +43,20 @@ export class Indice {
     }
   }
 
+
+  /**
+   * Corta os arrays de dados (timestamps, valorFechamento, rentabilidadeDiaria) para o intervalo de tempo especificado.
+   *
+   * @param fromTimestamp - O timestamp inicial (inclusive) para os dados cortados.
+   * @param toTimestamp - O timestamp final (inclusive) para os dados cortados.
+   */
+  crop(fromTimestamp: number | string, toTimestamp: number | string): { fromIndex: number; toIndex: number; } {
+    const { fromIndex, toIndex } = super.crop(fromTimestamp, toTimestamp);
+    this.valorFechamento = this.valorFechamento.slice(fromIndex, toIndex);
+    return { fromIndex, toIndex };
+  }
+
+
   /**
    * Verifica se os arrays de dados (timestamps e valorFechamento) possuem dados válidos e se têm o mesmo tamanho.
    * 
@@ -56,39 +70,5 @@ export class Indice {
 
   isEmpty(): boolean {
     return this.timestamps.length === 0 && this.valorFechamento.length === 0;
-  }
-
-  /**
-   * Encontra o índice do primeiro timestamp no array `timestamps` que é maior ou igual ao `timestamp` fornecido.
-   *
-   * @param timestamp - O timestamp a ser procurado no array `timestamps`.
-   * @returns O índice do primeiro timestamp que é maior ou igual ao timestamp fornecido.
-   */
-  findTimestampIndex(timestamp: number): number {
-    const index = this.timestamps.findIndex(t => t >= timestamp);
-    return index !== -1 ? index : this.timestamps.length;
-  }
-
-
-  /**
-   * Corta os arrays de dados (timestamps, valorFechamento, rentabilidadeDiaria) para o intervalo de tempo especificado.
-   *
-   * @param fromTimestamp - O timestamp inicial (inclusive) para os dados cortados.
-   * @param toTimestamp - O timestamp final (inclusive) para os dados cortados.
-   */
-  crop(fromTimestamp: number | string, toTimestamp: number | string) {
-    fromTimestamp = Number.isNaN(Number(fromTimestamp)) ? 0 : Number(fromTimestamp);
-    toTimestamp = Number.isNaN(Number(toTimestamp)) ? Number.POSITIVE_INFINITY : Number(toTimestamp);
-
-    if (fromTimestamp > toTimestamp) {
-      throw new Error('fromTimestamp cannot be greater than toTimestamp');
-    }
-
-    let fromIndex = this.findTimestampIndex(fromTimestamp);
-    let toIndex = this.findTimestampIndex(toTimestamp);
-
-    this.timestamps = this.timestamps.slice(fromIndex, toIndex);
-    this.valorFechamento = this.valorFechamento.slice(fromIndex, toIndex);
-    this.rentabilidadeDiaria = this.rentabilidadeDiaria.slice(fromIndex, toIndex);
   }
 }
