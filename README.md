@@ -5,10 +5,11 @@ Este projeto cria endpoints para uma API REST para backend que seja capaz de con
 ## Instalar e executar
 
 Tenha os seguintes softwares instalados na sua distro:
-git 
-docker
-node (testado em v22.4.1)
-npm (testado em 10.8.1)
+
+- git 
+- docker
+- node (testado em v22.4.1)
+- npm (testado em 10.8.1)
 
 opcional para testes manuais: bruno - Open source API Client similar ao Postman: https://www.usebruno.com/downloads
 
@@ -18,6 +19,7 @@ opcional para testes manuais: bruno - Open source API Client similar ao Postman:
 ### Manual
 - Execute o script criado para facilitar a instalação e execução do servidor:
 `npm run up`
+
 Este comando irá executar um pequeno script para instalar pacotes, buildar o projeto, executar os testes e iniciar o servidor.
 Caso queira executar este passo manualmente, execute os seguintes comandos:
 ```
