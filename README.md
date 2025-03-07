@@ -67,15 +67,20 @@ Uma coleção de testes de endpoint irá aparecer.
 Também é possível executar os testes de maneira manual pelo navegador, pois todos os parâmetros necessários são passados via URL pelo método GET. Por exemplo:
 
 http://localhost:9999/indice/IBOV
+
 http://localhost:9999/indice/IBOV?from=1701867600&to=1711112400
+
 http://localhost:9999/indice/CDI
+
 http://localhost:9999/indice/CDI?from=518400000000&to=577670400000
+
 http://localhost:9999/carteira?tickers=IBOV,ALUG11,WRLD11&pesos=50,20,30
+
 http://localhost:9999/carteira?tickers=IBOV,ALUG11,WRLD11&pesos=50,20,30&from=1701867600&to=1711112400&valorInicial=10000
+
 
 ### Prints dos testes manuais
 
-![](./prints_dos_testes/Screenshot%20from%202025-03-07%2011-54-02.png)
 ![](./prints_dos_testes/Screenshot%20from%202025-03-07%2011-54-16.png)
 ![](./prints_dos_testes/Screenshot%20from%202025-03-07%2011-54-27.png)
 ![](./prints_dos_testes/Screenshot%20from%202025-03-07%2011-55-11.png)
