@@ -12,11 +12,11 @@ npm (testado em 10.8.1)
 
 opcional para testes manuais: bruno - Open source API Client similar ao Postman: https://www.usebruno.com/downloads
 
-1 - Clone o repositório:
-`git clone ...`
+- Clone o repositório:
+`git clone git@github.com:felipecaetano0/backend-carteira-financeira.git`
 
 ### Manual
-2 - Execute o script criado para facilitar a instalação e execução do servidor:
+- Execute o script criado para facilitar a instalação e execução do servidor:
 `npm run up`
 Este comando irá executar um pequeno script para instalar pacotes, buildar o projeto, executar os testes e iniciar o servidor.
 Caso queira executar este passo manualmente, execute os seguintes comandos:
